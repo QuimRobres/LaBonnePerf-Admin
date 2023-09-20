@@ -18,7 +18,7 @@ import { createRouter, createWebHistory } from "vue-router";
 const routes = [
     {
         path: '/',
-        name: 'StartPage',
+        name: 'MainPage',
         component: () => import('@/components/MainPage/MainPage.vue'),
         /* beforeEnter: requireAuth, */
     },
@@ -52,6 +52,11 @@ const routes = [
         path: '/fiche-cordage/:commandNumber',
         name: 'FicheCordage',
         component: () => import('@/components/FicheCordage/FicheCordage.vue')
+    },
+    {
+        path: '/fiche-client/:id',
+        name: 'FicheCordage',
+        component: () => import('@/components/FicheClient/FicheClient.vue')
     },
 
 ]

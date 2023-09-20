@@ -1,12 +1,14 @@
 <template>
     <div>
         <div class="header-container">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24"
-                viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" fill="none" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M15 6l-6 6l6 6"></path>
-            </svg>
+            <div @click="() => this.$router.push({ name: 'MainPage' })">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24"
+                    height="24" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M15 6l-6 6l6 6"></path>
+                </svg>
+            </div>
             <p>Cordages passés</p>
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="24" height="24"
                 viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" fill="none" stroke-linecap="round"
@@ -18,8 +20,8 @@
             </svg>
         </div>
 
-        <InfoTable :itemsList="cordages" :filters="filters" tableTitle='Commande' tableSubtitle="État"
-            navigationLink="FicheCordage" />
+        <InfoTable :itemsList="cordages" :filters="filters" tableTitle='Commande' tableSubtitle="Date"
+            navigationLink="CordagesPasses" />
     </div>
 </template>
 <script>
@@ -35,8 +37,7 @@ export default {
                         break;
                     case 'date':
                         break;
-                    case 'status':
-                        break;
+
                 }
 
             }
@@ -53,10 +54,7 @@ export default {
                     name: 'Date',
                     field: 'date'
                 },
-                {
-                    name: 'État',
-                    field: 'status'
-                }
+
             ],
             cordages: [
                 {

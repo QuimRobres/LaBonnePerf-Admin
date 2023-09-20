@@ -1,10 +1,10 @@
 <template>
     <div class="table-container" @click="isFiltersOpen ? isFiltersOpen = false : null">
         <div class="table-header">
-            <div class="flex-container">
-                <p class="table-large-text">{{ tableTitle }}</p>
-                <p class="table-small-text">{{ tableSubtitle }}</p>
-            </div>
+
+            <p class="table-large-text">{{ tableTitle }}</p>
+            <p class="table-small-text">{{ tableSubtitle }}</p>
+
             <div class="flex-container">
                 <p class="table-medium-text">
                     Trier
@@ -26,16 +26,29 @@
         <div class="list-container">
             <div v-for="(item, index) in itemsList" :key="{ index }">
                 <div class="item-container" @click="() => handleNavigation(item)">
-                    <div class="flex-container">
-                        <p v-show="item.commandNumber" class="table-large-text">Nº {{ item.commandNumber }}</p>
-                        <p class="table-small-text">{{ item.status }}</p>
+                    <div class="table-content">
+                        <div>
+                            <p v-show="item.commandNumber" class="table-large-text">Nº {{ item.commandNumber }}</p>
+                            <div class="flex-container">
+                                <p v-show="item.name" class="table-large-text">{{ item.name }}</p>
+                                <p v-show="item.surname" class="table-large-text">{{ item.surname }}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <p v-show="item.status" class="table-small-text">{{ item.status }}</p>
+                            <p v-show="item.date" class="table-small-text">{{ item.date }}</p>
+                            <p v-show="item.subscription" class="table-small-text">{{ item.subscription }}</p>
+                            <p v-show="item.nb" class="table-small-text">{{ item.nb }}</p>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right"
+                            width="34" height="34" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M9 6l6 6l-6 6"></path>
+                        </svg>
+
                     </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="34"
-                        height="34" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <path d="M9 6l6 6l-6 6"></path>
-                    </svg>
+
                 </div>
                 <div v-show="index < itemsList.length - 1" class="separator"></div>
             </div>
@@ -62,7 +75,7 @@ export default {
     ],
     methods: {
         handleNavigation(item) {
-            this.$router.push({ name: this.navigationLink, params: { commandNumber: item.commandNumber } })
+            this.$router.push({ name: this.navigationLink, params: { commandNumber: item.commandNumber || item.id } })
 
         }
     },
@@ -86,6 +99,7 @@ export default {
 .table-header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 0px 10px;
 
 }
@@ -110,8 +124,15 @@ export default {
     font-weight: 600;
 }
 
+.table-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .modal-small-text {
     font-size: 10px;
+    margin-top: 12px;
 }
 
 .flex-container {
@@ -132,20 +153,17 @@ export default {
     border: 1px solid black;
     width: 95%;
     margin: auto;
-    margin-top: -6px;
-    margin-bottom: -6px;
+    margin-top: -7px;
+    margin-bottom: -5px;
     border-radius: 12px;
 }
 
 .list-container {
     overflow: scroll;
-    max-height: 70vh;
+    max-height: 80vh;
 }
 
 .item-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 0px 10px;
 }
 

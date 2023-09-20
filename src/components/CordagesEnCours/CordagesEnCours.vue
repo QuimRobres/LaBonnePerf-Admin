@@ -1,12 +1,15 @@
 <template>
     <div>
         <div class="header-container">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24"
-                viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" fill="none" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M15 6l-6 6l6 6"></path>
-            </svg>
+            <div @click="() => this.$router.push({ name: 'MainPage' })">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24"
+                    height="24" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M15 6l-6 6l6 6"></path>
+                </svg>
+            </div>
+
             <p>Cordages en cours</p>
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="24" height="24"
                 viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" fill="none" stroke-linecap="round"
@@ -107,34 +110,7 @@ export default {
                     commandNumber: 1234567,
                     status: 'Retour raquette',
                 },
-                {
-                    commandNumber: 1234567,
-                    status: 'Cordage validé',
-                },
-                {
-                    commandNumber: 1234567,
-                    status: 'Cordage validé',
-                },
-                {
-                    commandNumber: 1234567,
-                    status: 'Cordage validé',
-                },
-                {
-                    commandNumber: 1234567,
-                    status: 'Cordage validé',
-                },
-                {
-                    commandNumber: 1234567,
-                    status: 'Dépôt raquette',
-                },
-                {
-                    commandNumber: 1234567,
-                    status: 'Changement cordage',
-                },
-                {
-                    commandNumber: 1234567,
-                    status: 'Retour raquette',
-                },
+
             ]
         }
     }

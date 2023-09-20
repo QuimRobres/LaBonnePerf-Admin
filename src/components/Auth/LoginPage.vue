@@ -1,50 +1,52 @@
 <template>
-    <p class="title">Connexion</p>
+    <div className="main-div">
+        <p class="title">Connexion</p>
 
-    <MailInput field="email" :onFormChange="onFormChange" />
-    <PasswordInput field="password" :onFormChange="onFormChange" />
-    <div class="forgot-password">
-        <span @click="openModal">Mot de passe oublié</span>
-    </div>
-    <p v-if="formError !== ''" class="error-message">{{ formError }}</p>
-    <div class="login-button-container">
-        <div class="login-button" @click="login">Me connecter</div>
-    </div>
+        <MailInput field="email" :onFormChange="onFormChange" />
+        <PasswordInput field="password" :onFormChange="onFormChange" />
+        <div class="forgot-password">
+            <span @click="openModal">Mot de passe oublié</span>
+        </div>
+        <p v-if="formError !== ''" class="error-message">{{ formError }}</p>
+        <div class="login-button-container">
+            <div class="login-button" @click="login">Me connecter</div>
+        </div>
 
-    <!--  <div class="inscription-link">
+        <!--  <div class="inscription-link">
         <span @click="inscription">Inscription</span>
     </div> -->
-    <div v-if="isForgotPasswordModal" class="modal-overlay">
-        <div class="modal">
-            <div class="modal-header">
-                <h2>Nouveau mot de passe</h2>
-                <div class="modal-close" @click="closeModal">&times;</div>
-            </div>
-            <div v-if="!changePasswordOk">
-                <MailInput field="email" :onFormChange="onFormChange" />
-                <div class="login-button-container" @click="recoverPassword">
-                    <div class="login-button">Valider</div>
+        <div v-if="isForgotPasswordModal" class="modal-overlay">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2>Nouveau mot de passe</h2>
+                    <div class="modal-close" @click="closeModal">&times;</div>
                 </div>
-                <div class="login-button-container" @click="closeModal">
-                    <div class="annuler-button">Annuler</div>
+                <div v-if="!changePasswordOk">
+                    <MailInput field="email" :onFormChange="onFormChange" />
+                    <div class="login-button-container" @click="recoverPassword">
+                        <div class="login-button">Valider</div>
+                    </div>
+                    <div class="login-button-container" @click="closeModal">
+                        <div class="annuler-button">Annuler</div>
+                    </div>
                 </div>
+                <p v-else>Check your email!</p>
             </div>
-            <p v-else>Check your email!</p>
         </div>
-    </div>
-    <div v-if="isResetPasswordModal" class="modal-overlay">
-        <div class="modal">
-            <div class="modal-header">
-                <h2>Nouveau mot de passe</h2>
-                <div class="modal-close" @click="closeModal">&times;</div>
-            </div>
-            <div>
-                <PasswordInput field="password" :onFormChange="onFormChange" />
-                <div class="login-button-container" @click="resetPassword">
-                    <div class="login-button">Valider</div>
+        <div v-if="isResetPasswordModal" class="modal-overlay">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2>Nouveau mot de passe</h2>
+                    <div class="modal-close" @click="closeModal">&times;</div>
                 </div>
-                <div class="login-button-container" @click="closeModal">
-                    <div class="annuler-button">Annuler</div>
+                <div>
+                    <PasswordInput field="password" :onFormChange="onFormChange" />
+                    <div class="login-button-container" @click="resetPassword">
+                        <div class="login-button">Valider</div>
+                    </div>
+                    <div class="login-button-container" @click="closeModal">
+                        <div class="annuler-button">Annuler</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -97,6 +99,11 @@ export default {
 </script>
 
 <style scoped>
+.main-div {
+    background: var(--background,
+            linear-gradient(225deg, #a73d01 0%, #ea6c04 100%));
+}
+
 .title {
     font-size: 28px;
     color: #fff;

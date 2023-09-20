@@ -1,36 +1,59 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-const requireAuth = (to, from, next) => {
+/* const requireAuth = (to, from, next) => {
     const isAuthenticated = localStorage.getItem("isAuthenticated");
 
     if (isAuthenticated) {
-        // Si el usuario está autenticado, verifica si intenta acceder a LoginPage o InscriptionPage
         console.log(to)
         if (to.name === "LoginPage" || to.name === "InscriptionPage") {
-            // Redirige a la página de inicio
             next({ name: "StartPage" });
         } else {
-            // Permite el acceso a otras páginas autenticadas
             next();
         }
     } else {
-        // Si no está autenticado, redirige a la página de inicio de sesión
         next({ name: "LoginPage" });
     }
-};
+}; */
 
 const routes = [
     {
         path: '/',
         name: 'StartPage',
         component: () => import('@/components/MainPage/MainPage.vue'),
-        beforeEnter: requireAuth,
+        /* beforeEnter: requireAuth, */
     },
     {
         path: '/login',
         name: 'LoginPage',
         component: () => import('@/components/Auth/LoginPage.vue')
-    }
+    },
+    {
+        path: '/cordages-en-cours',
+        name: 'CordagesEnCours',
+        component: () => import('@/components/CordagesEnCours/CordagesEnCours.vue')
+    },
+    {
+        path: '/cordages-passes',
+        name: 'CordagesPasses',
+        component: () => import('@/components/CordagesPasses/CordagesPasses.vue')
+    },
+
+    {
+        path: '/relation-client',
+        name: 'RelationClient',
+        component: () => import('@/components/RelationClient/RelationClient.vue')
+    },
+    {
+        path: '/stock',
+        name: 'Stock',
+        component: () => import('@/components/Stock/Stock.vue')
+    },
+    {
+        path: '/fiche-cordage/:commandNumber',
+        name: 'FicheCordage',
+        component: () => import('@/components/FicheCordage/FicheCordage.vue')
+    },
+
 ]
 console.log('test kimo', process.env.BASE_URL)
 const router = createRouter({

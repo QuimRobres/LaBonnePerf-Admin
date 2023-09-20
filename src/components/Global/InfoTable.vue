@@ -75,7 +75,7 @@ export default {
     ],
     methods: {
         handleNavigation(item) {
-            this.$router.push({ name: this.navigationLink, params: { commandNumber: item.commandNumber || item.id } })
+            this.$router.push({ name: this.navigationLink, params: { id: item.commandNumber || item.id } })
 
         }
     },

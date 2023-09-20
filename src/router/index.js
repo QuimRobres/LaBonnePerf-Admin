@@ -49,7 +49,7 @@ const routes = [
         component: () => import('@/components/Stock/Stock.vue')
     },
     {
-        path: '/fiche-cordage/:commandNumber',
+        path: '/fiche-cordage/:id',
         name: 'FicheCordage',
         component: () => import('@/components/FicheCordage/FicheCordage.vue')
     },

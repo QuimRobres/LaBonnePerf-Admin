@@ -1,10 +1,9 @@
 <template>
     <div class="table-container" @click="isFiltersOpen ? isFiltersOpen = false : null">
         <div class="table-header">
-
+{{  screenheight }}
             <p class="table-large-text">{{ tableTitle }}</p>
             <p class="table-small-text">{{ tableSubtitle }}</p>
-
             <div class="flex-container">
                 <p class="table-medium-text">
                     Trier
@@ -23,7 +22,7 @@
             </div>
         </div>
         <div class="thick-separator"></div>
-        <div class="list-container">
+        <div class="list-container" :style="{ maxHeight: `${screenHeight}px` }">
             <div v-for="(item, index) in itemsList" :key="{ index }">
                 <div class="item-container" @click="() => handleNavigation(item)">
                     <div class="table-content">
@@ -70,20 +69,26 @@ export default {
         'tableTitle',
         'tableSubtitle',
         'filters',
-        'navigationLink'
+        'navigationLink',
 
     ],
+    data() {
+        return {
+            screenHeight: 0,
+            isFiltersOpen: false,
+        }
+    },
+    mounted() {
+        this.screenHeight = window.innerHeight - 200;
+
+    },
     methods: {
         handleNavigation(item) {
             this.$router.push({ name: this.navigationLink, params: { id: item.commandNumber || item.id } })
 
         }
     },
-    data() {
-        return {
-            isFiltersOpen: false
-        }
-    },
+
 
 }
 </script>
@@ -160,7 +165,7 @@ export default {
 
 .list-container {
     overflow: scroll;
-    max-height: 80vh;
+
 }
 
 .item-container {

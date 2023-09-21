@@ -2,8 +2,8 @@
     <div>
         <div class="header-container">
             <div @click="() => this.$router.push({ name: 'MainPage' })">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24"
-                    height="24" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" fill="none"
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="42"
+                    height="42" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" fill="none"
                     stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path d="M15 6l-6 6l6 6"></path>

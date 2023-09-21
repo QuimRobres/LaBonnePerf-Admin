@@ -55,9 +55,15 @@ const routes = [
     },
     {
         path: '/fiche-client/:id',
-        name: 'FicheCordage',
+        name: 'FicheClient',
         component: () => import('@/components/FicheClient/FicheClient.vue')
     },
+    {
+        path: '/fiche-produit/:id',
+        name: 'FicheProduit',
+        component: () => import('@/components/FicheProduit/FicheProduit.vue')
+    },
+
 
 ]
 console.log('test kimo', process.env.BASE_URL)

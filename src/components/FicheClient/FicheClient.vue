@@ -2,7 +2,7 @@
     <div>
         <div class="header-container">
             <div class="flex-container">
-                <div @click="() => this.$router.push({ name: 'MainPage' })">
+                <div @click="() => this.$router.push({ name: 'RelationClient' })">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="42"
                         height="42" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                         stroke-linecap="round" stroke-linejoin="round">

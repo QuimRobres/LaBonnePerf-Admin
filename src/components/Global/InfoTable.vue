@@ -1,7 +1,6 @@
 <template>
     <div class="table-container" @click="isFiltersOpen ? isFiltersOpen = false : null">
         <div class="table-header">
-{{  screenheight }}
             <p class="table-large-text">{{ tableTitle }}</p>
             <p class="table-small-text">{{ tableSubtitle }}</p>
             <div class="flex-container">
@@ -87,9 +86,7 @@ export default {
             this.$router.push({ name: this.navigationLink, params: { id: item.commandNumber || item.id } })
 
         }
-    },
-
-
+    }
 }
 </script>
 

@@ -13,10 +13,21 @@
             </div>
         </div>
         <div class="buttons-container">
-            <div v-for="(option, index) in options" :key="index" class="navigation-button"
-                @click="() => this.$router.push({ name: option.navigation })">
-                <p> {{ option.label }}</p>
-
+            <div class="navigation-button-container">
+                <div class="navigation-button" @click="() => this.$router.push({ name: 'CordagesEnCours' })">
+                    <p>Cordages en cours</p>
+                </div>
+                <div class="navigation-button" @click="() => this.$router.push({ name: 'CordagesPasses' })">
+                    <p>Cordages passés</p>
+                </div>
+            </div>
+            <div class="navigation-button-container">
+                <div class="navigation-button" @click="() => this.$router.push({ name: 'RelationClient' })">
+                    <p>Relation client</p>
+                </div>
+                <div class="navigation-button" @click="() => this.$router.push({ name: 'Stock' })">
+                    <p>Stock</p>
+                </div>
             </div>
         </div>
         <div class="bottom-container">
@@ -100,18 +111,25 @@ export default {
 }
 
 .buttons-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.navigation-button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .navigation-button {
+    text-align: center;
     border-radius: 13px;
     background: #EAE604;
     height: 74px;
     width: 124px;
+    padding: 2px;
     font-weight: 600;
-    margin: auto;
     display: flex;
     align-items: center;
     justify-content: center;

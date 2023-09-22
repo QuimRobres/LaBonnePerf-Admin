@@ -56,6 +56,7 @@
 <script>
 import MailInput from "../Inputs/MailInput.vue";
 import PasswordInput from "../Inputs/PasswordInput.vue";
+import medusa from "@/medusa-config";
 
 export default {
     name: 'App',
@@ -94,6 +95,24 @@ export default {
             this.isForgotPasswordModal = false;
             this.isResetPasswordModal = false;
         },
+        onFormChange(field, value) {
+            this.form[field] = value;
+        },
+        login() {
+            medusa.admin.auth.createSession({
+                email: this.form.email,
+                password: this.form.password
+            }).then(({ user }) => {
+                console.log('test kimo user', user)
+                localStorage.setItem("isAuthenticated", true);
+                /*  localStorage.setItem("user", JSON.stringify(user)); */
+                this.$router.push({ name: "MainPage" });
+            }).catch((error) => {
+                console.log("ERRRORR", error);
+                this.formError =
+                    "Une erreur s'est produite lors de la connexion. Veuillez vérifier vos identifiants et réessayer";
+            });
+        }
     }
 }
 </script>
@@ -102,6 +121,8 @@ export default {
 .main-div {
     background: var(--background,
             linear-gradient(225deg, #a73d01 0%, #ea6c04 100%));
+    height: 100%;
+    margin-top: -28px !important;
 }
 
 .title {
@@ -110,6 +131,7 @@ export default {
     font-weight: 600;
     text-align: left;
     width: 100px;
+    padding-top: 30px;
 }
 
 .description {
@@ -145,6 +167,7 @@ export default {
     color: var(--black, #0d0d0d);
     font-size: 14px;
     font-weight: 600;
+    text-align: center;
 }
 
 .annuler-button {

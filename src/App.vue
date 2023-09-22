@@ -26,8 +26,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  background: white;
   height: 100%;
-  padding: 30px;
+
+}
+
+#app>div {
+  padding: 0px 30px;
 }
 </style>

@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-/* const requireAuth = (to, from, next) => {
+const requireAuth = (to, from, next) => {
     const isAuthenticated = localStorage.getItem("isAuthenticated");
 
     if (isAuthenticated) {
@@ -13,14 +13,14 @@ import { createRouter, createWebHistory } from "vue-router";
     } else {
         next({ name: "LoginPage" });
     }
-}; */
+};
 
 const routes = [
     {
         path: '/',
         name: 'MainPage',
         component: () => import('@/components/MainPage/MainPage.vue'),
-        /* beforeEnter: requireAuth, */
+        beforeEnter: requireAuth,
     },
     {
         path: '/login',
@@ -30,38 +30,51 @@ const routes = [
     {
         path: '/cordages-en-cours',
         name: 'CordagesEnCours',
-        component: () => import('@/components/CordagesEnCours/CordagesEnCours.vue')
+        component: () => import('@/components/CordagesEnCours/CordagesEnCours.vue'),
+        beforeEnter: requireAuth,
     },
     {
         path: '/cordages-passes',
         name: 'CordagesPasses',
-        component: () => import('@/components/CordagesPasses/CordagesPasses.vue')
+        component: () => import('@/components/CordagesPasses/CordagesPasses.vue'),
+        beforeEnter: requireAuth,
     },
 
     {
         path: '/relation-client',
         name: 'RelationClient',
-        component: () => import('@/components/RelationClient/RelationClient.vue')
+        component: () => import('@/components/RelationClient/RelationClient.vue'),
+        beforeEnter: requireAuth,
     },
     {
         path: '/stock',
         name: 'Stock',
-        component: () => import('@/components/Stock/Stock.vue')
+        component: () => import('@/components/Stock/Stock.vue'),
+        beforeEnter: requireAuth,
     },
     {
         path: '/fiche-cordage/:id',
         name: 'FicheCordage',
-        component: () => import('@/components/FicheCordage/FicheCordage.vue')
+        component: () => import('@/components/FicheCordage/FicheCordage.vue'),
+        beforeEnter: requireAuth,
     },
     {
         path: '/fiche-client/:id',
         name: 'FicheClient',
-        component: () => import('@/components/FicheClient/FicheClient.vue')
+        component: () => import('@/components/FicheClient/FicheClient.vue'),
+        beforeEnter: requireAuth,
     },
     {
         path: '/fiche-produit/:id',
         name: 'FicheProduit',
-        component: () => import('@/components/FicheProduit/FicheProduit.vue')
+        component: () => import('@/components/FicheProduit/FicheProduit.vue'),
+        beforeEnter: requireAuth,
+    },
+    {
+        path: '/ajouter-produit',
+        name: 'AjouterProduit',
+        component: () => import('@/components/AjouterPoduit/AjouterProduit.vue'),
+        beforeEnter: requireAuth,
     },
 
 

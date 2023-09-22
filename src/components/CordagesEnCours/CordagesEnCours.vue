@@ -39,6 +39,8 @@
 
 <script>
 import InfoTable from '../Global/InfoTable.vue';
+import medusa from "@/medusa-config";
+
 export default {
     name: 'App',
     components: { InfoTable },
@@ -57,6 +59,22 @@ export default {
             }
         }
     },
+    async mounted() {
+        medusa.admin.orders.list({
+            /*   payment_status: ['captured'] // Cordages passes */
+            payment_status: ['awaiting']  // Cordages en cours
+        })
+            .then(({ orders, limit, offset, count }) => {
+                const editedOrders = orders.map((order) => {
+                    order = { ...order, commandNumber: order.id.substr(-7) }
+                    return order
+                })
+
+                console.log('test kimo', limit, offset, count);
+                console.log('test kimo', orders);
+                this.cordages = editedOrders
+            });
+    },
     data() {
         return {
             filters: [
@@ -73,45 +91,7 @@ export default {
                     field: 'status'
                 }
             ],
-            cordages: [
-                {
-                    commandNumber: 1234567,
-                    status: 'Cordage validé',
-                },
-                {
-                    commandNumber: 1234567,
-                    status: 'Dépôt raquette',
-                },
-                {
-                    commandNumber: 1234567,
-                    status: 'Changement cordage',
-                },
-                {
-                    commandNumber: 1234567,
-                    status: 'Retour raquette',
-                },
-                {
-                    commandNumber: 1234567,
-                    status: 'Cordage validé',
-                },
-                {
-                    commandNumber: 1234567,
-                    status: 'Cordage validé',
-                },
-                {
-                    commandNumber: 1234567,
-                    status: 'Dépôt raquette',
-                },
-                {
-                    commandNumber: 1234567,
-                    status: 'Changement cordage',
-                },
-                {
-                    commandNumber: 1234567,
-                    status: 'Retour raquette',
-                },
-
-            ]
+            cordages: []
         }
     }
 }

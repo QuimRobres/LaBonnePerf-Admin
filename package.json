@@ -8,6 +8,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@medusajs/medusa": "^1.16.1",
+    "@medusajs/medusa-js": "^6.0.4",
     "core-js": "^3.8.3",
     "vue": "^3.2.13",
     "vue-router": "^4.2.4"

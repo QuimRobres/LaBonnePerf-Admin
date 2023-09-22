@@ -26,7 +26,7 @@
                 <div class="item-container" @click="() => handleNavigation(item)">
                     <div class="table-content">
                         <div>
-                            <p v-show="item.commandNumber" class="table-large-text">Nº {{ item.commandNumber }}</p>
+                            <p v-show="item.commandNumber" class="table-large-text">{{ item.commandNumber }}</p>
                             <div class="flex-container">
                                 <p v-show="item.name" class="table-large-text">{{ item.name }}</p>
                                 <p v-show="item.surname" class="table-large-text">{{ item.surname }}</p>

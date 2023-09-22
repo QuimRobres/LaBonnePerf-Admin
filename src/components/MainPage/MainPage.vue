@@ -31,26 +31,18 @@
             </div>
         </div>
         <div class="bottom-container">
-            <p class="title-text">Ajout rapide</p>
-            <div class="text-icon-container">
-                <p>Ajouter un cordage</p>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="24" height="24"
-                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M12 5l0 14"></path>
-                    <path d="M5 12l14 0"></path>
-                </svg>
-            </div>
             <div class="text-icon-container">
                 <p>Ajouter un produit</p>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="24" height="24"
-                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M12 5l0 14"></path>
-                    <path d="M5 12l14 0"></path>
-                </svg>
+                <div @click="() => this.$router.push({ name: 'AjouterProduit' })">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="24" height="24"
+                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M12 5l0 14"></path>
+                        <path d="M5 12l14 0"></path>
+                    </svg>
+                </div>
+
             </div>
         </div>
 
@@ -84,12 +76,6 @@ export default {
             ]
         }
     },
-    methods: {
-        handleNavigation() {
-            this.$router.push({ name: 'CordagesEnCours' })
-            console.log('guey')
-        }
-    }
 }
 </script>
 
@@ -135,13 +121,6 @@ export default {
     justify-content: center;
 }
 
-/* .navigation-button:first-child {
-    margin-left: 0px;
-}
-
-.navigation-button:last-child {
-    margin-right: 0px;
-} */
 .navigation-button p {
     padding: 10px;
 }
